@@ -41,7 +41,7 @@ Sitemap: https://arbourviewhomes.ca/sitemap.xml
 ## Headers (`next.config.ts`)
 
 - Sitemap: `Content-Type: text/xml; charset=UTF-8`, `Content-Disposition: inline; filename="sitemap.xml"`, `Cache-Control: public, max-age=0, must-revalidate`
-- Middleware must exclude `robots.txt` and `sitemap` from host redirects
+- Do **not** put apex↔www redirects in Next.js middleware if Vercel Domains already redirects. That causes `ERR_TOO_MANY_REDIRECTS`. Let Vercel be the only host redirect.
 
 ## Why GSC says "Sitemap could not be read"
 
