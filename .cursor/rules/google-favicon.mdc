@@ -1,0 +1,23 @@
+---
+description: Google Search favicon setup so results show a site icon instead of the globe
+alwaysApply: true
+---
+
+# Google Search favicon
+
+Google shows the globe when the only icon is Next.js `app/icon.tsx` at **32x32**. Search requires a **square icon whose size is a multiple of 48px**, crawlable, on the GSC property host.
+
+## What to ship
+
+Static files in `public/` (same pattern as arbourviewhomes.com):
+
+- `/favicon.ico` (48x48)
+- `/icon-48.png` — this is the one Google Search uses
+- `/icon-192.png`, `/icon-512.png`
+- `/apple-touch-icon.png` (180x180)
+
+Do **not** add `app/icon.tsx`. That injects a 32x32 `<link rel="icon">` and Google ignores it.
+
+Wire them in `app/layout.tsx` `metadata.icons`, with the 48x48 PNG listed first. Keep `favicon.ico` and `icon` excluded from middleware host redirects.
+
+Google can take days to recrawl. After deploy, the homepage `<head>` must include `rel="icon"` pointing at `/icon-48.png` or `/favicon.ico` on **arbourviewhomes.ca** (no www redirect).

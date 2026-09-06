@@ -1,0 +1,54 @@
+---
+description: How to build sitemaps Google Search Console can fetch on these landing pages
+alwaysApply: true
+---
+
+# Sitemap structure that works
+
+Do not use Next.js `app/sitemap.ts` or `app/robots.ts`. GSC often cannot fetch those (500, 406, `vary: rsc` headers, or HTML). Match Enclave: static files in `public/`.
+
+## Files
+
+- `public/sitemap.xml` — real XML, not a metadata route
+- `public/robots.txt` — points at the sitemap on the **Search Console property host**
+
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://arbourviewhomes.ca/sitemap.xml
+```
+
+## XML shape
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://arbourviewhomes.ca/</loc>
+    <lastmod>2026-09-06T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+```
+
+- Keep the XML declaration
+- Homepage `<loc>` has a trailing slash; other paths do not (`trailingSlash: false`)
+- `priority` is `1.0`, not `1`
+- Every `<loc>` must be the same host as the GSC property (this site: **apex** `arbourviewhomes.ca`, not `www`)
+
+## Headers (`next.config.ts`)
+
+- Sitemap: `Content-Type: text/xml; charset=UTF-8`, `Content-Disposition: inline; filename="sitemap.xml"`, `Cache-Control: public, max-age=0, must-revalidate`
+- Middleware must exclude `robots.txt` and `sitemap` from host redirects
+
+## Why GSC says "Sitemap could not be read"
+
+1. Sitemap URL **redirects** (308 apex → www). Google will not follow that for sitemaps.
+2. Sitemap host **does not match** the GSC property (www file on an `arbourviewhomes.ca` property).
+3. Dynamic `app/sitemap.ts` instead of `public/sitemap.xml`.
+
+`SITE_URL`, middleware canonical host, Vercel Domains redirect, sitemap `<loc>`s, and GSC must all be **apex**. In Vercel: `arbourviewhomes.ca` is primary; `www` redirects to apex.
+
+Submit only `https://arbourviewhomes.ca/sitemap.xml` on the apex property, then resubmit after a deploy.

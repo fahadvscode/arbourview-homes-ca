@@ -37,6 +37,37 @@ const nextConfig: NextConfig = {
           { key: "Cache-Control", value: "public, max-age=3600, must-revalidate" },
         ],
       },
+      {
+        source: "/favicon.ico",
+        headers: [
+          { key: "Content-Type", value: "image/x-icon" },
+          { key: "Cache-Control", value: "public, max-age=86400, must-revalidate" },
+        ],
+      },
+      {
+        source: "/icon-48.png",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, must-revalidate" },
+        ],
+      },
+      {
+        source: "/icon-192.png",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, must-revalidate" },
+        ],
+      },
+      {
+        source: "/icon-512.png",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, must-revalidate" },
+        ],
+      },
+      {
+        source: "/apple-touch-icon.png",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, must-revalidate" },
+        ],
+      },
     ];
   },
   async redirects() {

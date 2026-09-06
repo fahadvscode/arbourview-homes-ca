@@ -42,6 +42,13 @@ export function siteOrganizationSchema() {
     "@id": `${SITE_URL}/#organization`,
     name: SITE_ORG_NAME,
     url: `${SITE_URL}/`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/icon-512.png`,
+      width: 512,
+      height: 512,
+    },
+    image: `${SITE_URL}/icon-512.png`,
     description:
       "An independent information and registration resource covering Arbourview, a pre-construction community by Mattamy Homes in Georgetown, Ontario. Not affiliated with or endorsed by Mattamy Homes.",
   };
