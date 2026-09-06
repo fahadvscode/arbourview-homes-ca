@@ -5,7 +5,7 @@
  * HOW TO BUMP FRESHNESS DATES: When Mattamy Homes releases new Arbourview details, update LAST_UPDATED and LAST_UPDATED_ISO here. Sitemap lastmod, footer, FAQ, JSON-LD dateModified, and disclaimer copy all derive from these two constants.
  */
 
-export const SITE_URL = "https://arbourviewhomes.ca";
+export const SITE_URL = "https://www.arbourviewhomes.ca";
 export const SITE_NAME = "arbourviewhomes.ca";
 export const SITE_ORG_NAME = "arbourviewhomes.ca";
 export const PROJECT_NAME = "Arbourview";
@@ -25,7 +25,7 @@ export const LAST_UPDATED_ISO = "2026-09-01";
 export const STATUS = "Coming Soon — Registration Open";
 export const STATUS_BADGE = "Coming Soon — Registration Open";
 export const TAGLINE = "Where Your Kids Will Know the Farmers by Name";
-export const SITE_SOURCE = "homes_ca";
+export const SITE_SOURCE = "https://arbourviewhomes.ca";
 export const PLACE_NAME = "Arbourview Sales Information";
 
 export const GEO = {

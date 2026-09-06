@@ -4,7 +4,7 @@ import { leadFormSchema, MIN_SUBMIT_MS, normalizePhone } from "@/lib/validation"
 
 export const dynamic = "force-dynamic";
 
-const SITE_SOURCE = "homes_ca";
+const SITE_SOURCE = "https://arbourviewhomes.ca";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       email: data.email,
       phone: normalizePhone(data.phone),
       is_broker: data.is_broker === "yes",
-      site_source: SITE_SOURCE,
+      site_source: SITE_SOURCE, // https://arbourviewhomes.ca — hardcoded server-side, never taken from the client
       consent: true,
       consent_timestamp: consentAt,
       page_path: pagePath,

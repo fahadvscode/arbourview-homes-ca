@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const CANONICAL_HOST = "arbourviewhomes.ca";
-const ALIAS_HOSTS = new Set(["www.arbourviewhomes.ca"]);
+const CANONICAL_HOST = "www.arbourviewhomes.ca";
+const ALIAS_HOSTS = new Set(["arbourviewhomes.ca"]);
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0];

@@ -1,7 +1,7 @@
 -- Verify the shared arbourview_leads table exists before proceeding.
 -- If this query returns no rows, run the full DDL from arbourviewhomes.com's
 -- 001_create_leads.sql migration first, then re-run this check.
--- This site inserts site_source = 'homes_ca'.
+-- This site inserts site_source = 'https://arbourviewhomes.ca'.
 -- Idempotent safety net — only creates the table if it is genuinely missing;
 -- a no-op if arbourviewhomes.com already created it.
 
